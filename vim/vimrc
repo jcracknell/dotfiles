@@ -1,0 +1,39 @@
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+
+filetype plugin indent on
+colors herald
+set autoindent
+set nu
+set spell
+set bg=dark
+set hlsearch
+set cursorline
+set cursorcolumn
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [ENC=%{strlen(&fenc)?&fenc:'none'}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set laststatus=2
+set showcmd
+set linebreak
+set tabstop=2
+set shiftwidth=2
+syntax on
+
+if v:version >= 700
+	set omnifunc=syntaxcomplete#Complete
+	set completeopt=longest,menuone
+
+	" CleverTab per http://vim.wikia.com/wiki/VimTip102
+	function! CleverTab()
+		if pumvisible()
+			return "\<C-N>"
+		endif
+		if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+			return "\<Tab>"
+		elseif exists('&omnifunc') && &omnifunc != ''
+			return "\<C-X>\<C-O>"
+		else
+			return "\<C-N>"
+		endif
+	endfunction
+	inoremap <Tab> <C-R>=CleverTab()<CR>
+endif	
