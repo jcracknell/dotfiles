@@ -1,26 +1,64 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
-filetype plugin indent on
-colors wombat
+filetype plugin on
+
+let isWindowsHost = has('win32') || has('win16')
+
+if !has('gui_running')
+	set t_Co=256
+else
+	set guioptions-=T
+	if isWindowsHost
+		set gfn=Inconsolata:h11:cANSI
+	else
+		set gfn=Inconsolata\ 11
+	endif
+endif	
+
+if isWindowsHost
+	set directory=$USERPROFILE\\vimfiles\\swp//,.,C:\temp//
+else
+	set directory=~/.vim/swp//,.,/tmp//
+endif
+
 set autoindent
 set nu
-set spell
-set bg=dark
 set hlsearch
+set spell
 set cursorline
 set cursorcolumn
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [ENC=%{strlen(&fenc)?&fenc:'none'}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2
 set showcmd
 set linebreak
+
 set tabstop=2
 set shiftwidth=2
+
+set bg=dark
+colors herald
 syntax on
 
 if v:version >= 700
 	set omnifunc=syntaxcomplete#Complete
 	set completeopt=longest,menuone
+
+	function! JSynPreceding()
+		return synIDattr(synIDtrans(synID(line('.'), col('.') - 1, 1)), 'name')
+	endfunction
+
+	function! JSynFollowing()
+		return synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+	endfunction
+
+	" Comment Todo Constant String Identifier Function 
+	" Type Statement Keyword PreProc Number Special
+	function! PeriodComplete()
+		if pumvisible()
+			return '.'
+		endif
+	endfunction
 
 	" CleverTab per http://vim.wikia.com/wiki/VimTip102
 	function! CleverTab()
