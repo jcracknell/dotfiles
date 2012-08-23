@@ -6,8 +6,12 @@ filetype plugin on
 let isWindowsHost = has('win32') || has('win16')
 
 if !has('gui_running')
-	set t_Co=256
+	colors wombat
+	if !isWindowsHost
+		set t_Co=256
+	endif	
 else
+	colors herald
 	set guioptions-=T
 	if isWindowsHost
 		set gfn=Inconsolata:h11:cANSI
@@ -32,12 +36,10 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [ENC=%{strlen(&fenc)?&fenc:'none'}]\
 set laststatus=2
 set showcmd
 set linebreak
-
+set nowrap
 set tabstop=2
 set shiftwidth=2
-
 set bg=dark
-colors herald
 syntax on
 
 if v:version >= 700
