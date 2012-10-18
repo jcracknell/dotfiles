@@ -54,6 +54,9 @@ set shiftwidth=2
 set bg=dark
 syntax on
 
+" Filetypes
+au BufRead,BufNewFile *.less set filetype=css
+
 if v:version >= 700
 	set omnifunc=syntaxcomplete#Complete
 	set completeopt=longest,menuone
