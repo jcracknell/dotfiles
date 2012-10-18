@@ -15,8 +15,10 @@ else
 	set guioptions-=T
 	if isWindowsHost
 		set gfn=Inconsolata:h11:cANSI
+		set printfont=Inconsolata:h10:cANSI
 	else
 		set gfn=Inconsolata\ 11
+		set printfont=Inconsolata\ 10
 	endif
 endif	
 
@@ -26,9 +28,19 @@ else
 	set directory=~/.vim/swp//,.,/tmp//
 endif
 
-set autoindent
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
+
 set nu
 set hlsearch
+set incsearch
 set spell
 set cursorline
 set cursorcolumn
@@ -75,5 +87,6 @@ if v:version >= 700
 			return "\<C-N>"
 		endif
 	endfunction
-	inoremap <Tab> <C-R>=CleverTab()<CR>
+	" VsVim does not play well with this at all.
+	"inoremap <Tab> <C-R>=CleverTab()<CR>
 endif	
