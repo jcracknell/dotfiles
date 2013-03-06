@@ -14,11 +14,11 @@ else
 	colors herald
 	set guioptions-=T
 	if isWindowsHost
-		set gfn=Inconsolata:h11:cANSI
-		set printfont=Inconsolata:h10:cANSI
+		set gfn=Ubuntu Mono:h11:cANSI
+		set printfont=Ubuntu Mono:h10:cANSI
 	else
-		set gfn=Inconsolata\ 11
-		set printfont=Inconsolata\ 10
+		set gfn=Ubuntu\ Mono\ 11
+		set printfont=Ubuntu\ Mono\ 10
 	endif
 endif	
 
@@ -55,6 +55,7 @@ set bg=dark
 syntax on
 
 " Filetypes
+au BufRead,BufNewFile *.json set filetype=js
 au BufRead,BufNewFile *.less set filetype=css
 au BufRead,BufNewFile *.emd set filetype=markdown
 au BufRead,BufNewFile *.emd.expected set filetype=lisp
