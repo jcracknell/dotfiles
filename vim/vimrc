@@ -14,8 +14,8 @@ else
 	colors herald
 	set guioptions-=T
 	if isWindowsHost
-		set gfn=Ubuntu Mono:h11:cANSI
-		set printfont=Ubuntu Mono:h10:cANSI
+		set gfn=Ubuntu\ Mono:h11:cANSI
+		set printfont=Ubuntu\ Mono:h10:cANSI
 	else
 		set gfn=Ubuntu\ Mono\ 11
 		set printfont=Ubuntu\ Mono\ 10
