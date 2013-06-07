@@ -5,14 +5,34 @@ filetype plugin on
 
 let isWindowsHost = has('win32') || has('win16')
 
+set ai
+set nu
+set hlsearch
+set incsearch
+set colorcolumn=80
+set cursorline
+set cursorcolumn
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [ENC=%{strlen(&fenc)?&fenc:'none'}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set laststatus=2
+set showcmd
+set linebreak
+set nowrap
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set bg=dark
+syntax on
+
 if !has('gui_running')
 	colors wombat
+  hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 	if !isWindowsHost
 		set t_Co=256
 	endif	
 else
 	colors herald
 	set guioptions-=T
+  hi ColorColumn ctermbg=black guibg=black
 	if isWindowsHost
 		set gfn=Ubuntu\ Mono:h11:cANSI
 		set printfont=Ubuntu\ Mono:h10:cANSI
@@ -38,22 +58,6 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-set ai
-set nu
-set hlsearch
-set incsearch
-set cursorline
-set cursorcolumn
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [ENC=%{strlen(&fenc)?&fenc:'none'}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-set laststatus=2
-set showcmd
-set linebreak
-set nowrap
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set bg=dark
-syntax on
 
 " Filetypes
 au BufRead,BufNewFile *.json set filetype=js
