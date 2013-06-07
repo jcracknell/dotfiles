@@ -21,28 +21,28 @@ set bg=dark
 syntax on
 
 if !has('gui_running')
-	colors wombat
+  colors wombat
   hi ColorColumn ctermbg=lightgrey guibg=lightgrey
-	if !isWindowsHost
-		set t_Co=256
-	endif	
+  if !isWindowsHost
+    set t_Co=256
+  endif  
 else
-	colors herald
-	set guioptions-=T
+  colors herald
+  set guioptions-=T
   hi ColorColumn ctermbg=black guibg=black
-	if isWindowsHost
-		set gfn=Ubuntu\ Mono:h11:cANSI
-		set printfont=Ubuntu\ Mono:h10:cANSI
-	else
-		set gfn=Ubuntu\ Mono\ 11
-		set printfont=Ubuntu\ Mono\ 10
-	endif
-endif	
+  if isWindowsHost
+    set gfn=Ubuntu\ Mono:h11:cANSI
+    set printfont=Ubuntu\ Mono:h10:cANSI
+  else
+    set gfn=Ubuntu\ Mono\ 11
+    set printfont=Ubuntu\ Mono\ 10
+  endif
+endif  
 
 if isWindowsHost
-	set directory=$USERPROFILE\\vimfiles\\swp//,.,C:\temp//
+  set directory=$USERPROFILE\\vimfiles\\swp//,.,C:\temp//
 else
-	set directory=~/.vim/swp//,.,/tmp//
+  set directory=~/.vim/swp//,.,/tmp//
 endif
 
 if has("multi_byte")
@@ -63,41 +63,41 @@ au BufRead,BufNewFile *.emd set filetype=markdown
 au BufRead,BufNewFile *.emd.expected set filetype=lisp
 
 if v:version >= 700
-	set omnifunc=syntaxcomplete#Complete
-	set completeopt=longest,menuone
+  set omnifunc=syntaxcomplete#Complete
+  set completeopt=longest,menuone
 
-	function! JSynPreceding()
-		return synIDattr(synIDtrans(synID(line('.'), col('.') - 1, 1)), 'name')
-	endfunction
+  function! JSynPreceding()
+    return synIDattr(synIDtrans(synID(line('.'), col('.') - 1, 1)), 'name')
+  endfunction
 
-	function! JSynFollowing()
-		return synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
-	endfunction
+  function! JSynFollowing()
+    return synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+  endfunction
 
-	" Comment Todo Constant String Identifier Function 
-	" Type Statement Keyword PreProc Number Special
-	function! PeriodComplete()
-		if pumvisible()
-			return '.'
-		endif
-	endfunction
+  " Comment Todo Constant String Identifier Function 
+  " Type Statement Keyword PreProc Number Special
+  function! PeriodComplete()
+    if pumvisible()
+      return '.'
+    endif
+  endfunction
 
-	" CleverTab per http://vim.wikia.com/wiki/VimTip102
-	function! CleverTab()
-		if pumvisible()
-			return "\<C-N>"
-		endif
-		if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-			return "\<Tab>"
-		elseif exists('&omnifunc') && &omnifunc != ''
-			return "\<C-X>\<C-O>"
-		else
-			return "\<C-N>"
-		endif
-	endfunction
-	" VsVim does not play well with this at all.
-	"inoremap <Tab> <C-R>=CleverTab()<CR>
-endif	
+  " CleverTab per http://vim.wikia.com/wiki/VimTip102
+  function! CleverTab()
+    if pumvisible()
+      return "\<C-N>"
+    endif
+    if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+      return "\<Tab>"
+    elseif exists('&omnifunc') && &omnifunc != ''
+      return "\<C-X>\<C-O>"
+    else
+      return "\<C-N>"
+    endif
+  endfunction
+  " VsVim does not play well with this at all.
+  "inoremap <Tab> <C-R>=CleverTab()<CR>
+endif  
 
 " vim-indent-guides configuration
 let g:indent_guides_enable_on_vim_startup = 1
