@@ -1,6 +1,3 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
-
 filetype plugin on
 
 let isWindowsHost = has('win32') || has('win16')
@@ -101,3 +98,10 @@ if v:version >= 700
 	" VsVim does not play well with this at all.
 	"inoremap <Tab> <C-R>=CleverTab()<CR>
 endif	
+
+" vim-indent-guides configuration
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 1
+
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
