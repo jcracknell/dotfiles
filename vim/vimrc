@@ -9,7 +9,6 @@ set incsearch
 set colorcolumn=120
 set cursorline
 set cursorcolumn
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [ENC=%{strlen(&fenc)?&fenc:'none'}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2
 set showcmd
 set linebreak
@@ -102,6 +101,9 @@ endif
 " vim-indent-guides configuration
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 1
+
+" vim-airline configuration
+let g:airline_theme='badwolf'
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
