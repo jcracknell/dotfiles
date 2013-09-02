@@ -1,0 +1,6 @@
+[user]
+	name = James Cracknell
+[color]
+	ui = auto
+[alias]
+	fixup = commit --amend --date=$(date --iso-8601=seconds)
