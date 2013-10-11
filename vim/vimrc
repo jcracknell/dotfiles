@@ -20,15 +20,15 @@ set bg=dark
 syntax on
 
 if !has('gui_running')
-  colors wombat
-  hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+  colors sol-term
+  "hi ColorColumn ctermbg=lightgrey guibg=lightgrey
   if !isWindowsHost
     set t_Co=256
   endif  
 else
-  colors herald
+  colors sol
   set guioptions-=T
-  hi ColorColumn ctermbg=black guibg=black
+  "hi ColorColumn ctermbg=black guibg=black
   if isWindowsHost
     set gfn=Ubuntu\ Mono:h11:cANSI
     set printfont=Ubuntu\ Mono:h10:cANSI
@@ -100,10 +100,11 @@ endif
 
 " vim-indent-guides configuration
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 1
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size = 1
 
 " vim-airline configuration
-let g:airline_theme='badwolf'
+let g:airline_theme='sol'
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
