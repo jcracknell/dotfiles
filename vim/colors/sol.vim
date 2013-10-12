@@ -81,13 +81,13 @@ let g:colors_name = "sol"
 " First, the Normal
 " hi Normal          guifg=#0b0e0f guibg=#ededed gui=NONE
 " hi Normal          guifg=#0b0e0f guibg=#ecf0f1 gui=NONE " final one
-hi Normal            guifg=#0b0e0f guibg=#eeeeee gui=NONE
+hi Normal            guifg=#3b3e3f guibg=#eeeeee gui=NONE
 " hi Normal          guifg=#0b0e0f guibg=#dde4e6 gui=NONE
 " ---------------------------------------------------------------------
 " The Languages stuff
 hi Title             guifg=NONE    guibg=NONE    gui=NONE
 " ---------------------------------------------------------------------
-hi Comment           guifg=#999999 guibg=NONE    gui=NONE
+hi Comment           guifg=#888888 guibg=NONE    gui=NONE
 " ---------------------------------------------------------------------
 " hi Constant          guifg=#945db7 guibg=NONE    gui=NONE
 " hi Constant          guifg=#00bcbc guibg=NONE    gui=NONE
