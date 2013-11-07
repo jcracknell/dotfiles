@@ -17,6 +17,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set bg=dark
+set printoptions=paper:letter,number:y,top:5pc,right:5pc,bottom:5pc,left:5pc
 syntax on
 
 if !has('gui_running')
