@@ -57,7 +57,6 @@ endif
 
 " Filetypes
 au BufRead,BufNewFile *.json set filetype=js
-au BufRead,BufNewFile *.less set filetype=css
 au BufRead,BufNewFile *.emd set filetype=markdown
 au BufRead,BufNewFile *.emd.expected set filetype=lisp
 
