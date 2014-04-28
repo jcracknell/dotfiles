@@ -30,11 +30,11 @@ if !has('gui_running')
 else
   set guioptions-=T
   if isWindowsHost
-    set gfn=Ubuntu\ Mono:h11:cANSI
-    set printfont=Ubuntu\ Mono:h10:cANSI
+    set gfn=Cousine:h10:cANSI
+    set printfont=Cousine:h9:cANSI
   else
-    set gfn=Ubuntu\ Mono\ 11
-    set printfont=Ubuntu\ Mono\ 10
+    set gfn=Cousine\ 10
+    set printfont=Cousine\ 9
   endif
   colors base16-tomorrow
 endif  
