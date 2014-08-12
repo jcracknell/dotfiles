@@ -3,6 +3,12 @@ DOTFILES="$(pwd)/$(dirname "$0")"
 
 [[ -d "$HOME/.config" ]] || mkdir "$HOME/.config"
 
+function download() {
+  [ -d "$(basename "$2")" ] || mkdir -p "$(basename "$2")"
+  echo "$1 > $2"
+  curl -# -o "$2" "$1"
+}
+
 function link() { 
   [ -d "$(dirname "$1")" ] || mkdir -p "$(dirname "$1")"
   [ -f "$1" -o -d "$1" ] || ln -s "$0" "$1"
@@ -20,6 +26,10 @@ link "$DOTFILES/.ideavimrc"   "$HOME/.ideavimrc"
 [[ -f "$HOME/.gitconfig" ]] || touch "$HOME/.gitconfig"
 link "$DOTFILES/git"          "$HOME/.config/git"
 
+# Powerline fontconfig
+download https://raw.githubusercontent.com/Lokaltog/powerline/develop/font/PowerlineSymbols.otf ~/.local/share/fonts/PowerlineSymbols.otf
+download https://raw.githubusercontent.com/Lokaltog/powerline/develop/font/10-powerline-symbols.conf ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
+
 fontArchives=(
   http://openfontlibrary.org/assets/downloads/cousine/e64962b5515c2e41b8cd473d0113be51/cousine.zip
   http://openfontlibrary.org/assets/downloads/fantasque-sans-mono/db52617ba875d08cbd8e080ca3d9f756/fantasque-sans-mono.zip
@@ -30,8 +40,7 @@ for url in ${fontArchives[@]}; do
   fontDir="$HOME/.local/share/fonts"
   archive="/tmp/$(basename "$url")"
 
-  echo $url
-  curl -# -o $archive $url
+  download $url $archive
 
   if [ ! -d "$fontDir" ]; then mkdir -p "$fontDir"; fi
   
