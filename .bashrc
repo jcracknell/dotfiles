@@ -2,8 +2,14 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
+alias read='read -r'
 
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+
+function __ps1_e() {
+  # Bash maps non-printing delimiters \[ and \] in PS1 to \001 and \002 respectively
+  echo -ne "\\001\\e[${1}m\002"
+}
 
 function __ps1() {
   # Get the branch name or detached ref
@@ -14,16 +20,17 @@ function __ps1() {
   __ps1_sym_branch=$([ $__ps1_powerline ] && echo -e '\xEE\x82\xA0 ' || echo '' )
   __ps1_sym_sep=$([ $__ps1_powerline ] && echo -e '\xEE\x82\xB0'  || echo '>')
 
-  echo -ne "\\e[0;37;44m $1@$2 \\e[1;37m$3 \\e[0;34m"
+  echo -ne "$(__ps1_e '0;44') $1@$2 $(__ps1_e '1')$3 $(__ps1_e '0;34')"
 
   if [ $__ps1_git_branch ]; then
-    echo -ne "\\e[0;34;45m${__ps1_sym_sep} \\e[0;37;45m${__ps1_sym_branch}\\e[1;37;45m${__ps1_git_branch}${__ps1_git_status} \\e[0;35m"
+    echo -ne "$(__ps1_e '45')${__ps1_sym_sep} $(__ps1_e '0;45')${__ps1_sym_branch}$(__ps1_e '1')${__ps1_git_branch}${__ps1_git_status} $(__ps1_e '0;35')"
   fi
 
-  echo -ne "${__ps1_sym_sep}\\e[0m "
+  echo -ne "${__ps1_sym_sep}$(__ps1_e '0') "
 }
 
 export -f __ps1
+export -f __ps1_e
 export __ps1_powerline=1
 export PS1='$(__ps1 "\u" "\h" "\W")'
 
