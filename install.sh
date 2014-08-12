@@ -1,13 +1,19 @@
 #!/bin/bash
 DOTFILES="$(pwd)/$(dirname "$0")"
-ln -s "$DOTFILES/.bashrc" "$HOME/.bashrc"
-ln -s "$DOTFILES/sbt" "$HOME/.sbt"
-ln -s "$DOTFILES/vim" "$HOME/.vim"
-ln -s "$DOTFILES/vim/vimrc" "$HOME/.vimrc"
-ln -s "$DOTFILES/vimperatorrc" "$HOME/.vimperatorrc"
+
 [[ -d "$HOME/.config" ]] || mkdir "$HOME/.config"
-ln -s "$DOTFILES/git" "$HOME/.config/git"
-ln -s "$DOTFILES/.ideavimrc" "$HOME/.ideavimrc"
+
+function link() { 
+  [ -f "$1" -o -d "$1" ] || ln -s "$0" "$1"
+}
+
+link "$DOTFILES/.bashrc"      "$HOME/.bashrc"
+link "$DOTFILES/sbt"          "$HOME/.sbt"
+link "$DOTFILES/vim"          "$HOME/.vim"
+link "$DOTFILES/vim/vimrc"    "$HOME/.vimrc"
+link "$DOTFILES/vimperatorrc" "$HOME/.vimperatorrc"
+link "$DOTFILES/.ideavimrc"   "$HOME/.ideavimrc"
+link "$DOTFILES/git"          "$HOME/.config/git"
 
 fontArchives=(
   http://openfontlibrary.org/assets/downloads/cousine/e64962b5515c2e41b8cd473d0113be51/cousine.zip
