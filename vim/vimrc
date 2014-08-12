@@ -103,7 +103,8 @@ let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size = 1
 
 " vim-airline configuration
-let g:airline_theme='base16'
+let g:airline_theme = 'base16'
+let g:airline_powerline_fonts = 1
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
