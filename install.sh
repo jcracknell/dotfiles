@@ -13,6 +13,10 @@ link "$DOTFILES/vim"          "$HOME/.vim"
 link "$DOTFILES/vim/vimrc"    "$HOME/.vimrc"
 link "$DOTFILES/vimperatorrc" "$HOME/.vimperatorrc"
 link "$DOTFILES/.ideavimrc"   "$HOME/.ideavimrc"
+
+# Ensure that the primary user configuration file exists so that host-specific global settings are
+# written to in
+[[ -f "$HOME/.gitconfig" ]] || touch "$HOME/.gitconfig"
 link "$DOTFILES/git"          "$HOME/.config/git"
 
 fontArchives=(
