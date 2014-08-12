@@ -4,6 +4,7 @@ DOTFILES="$(pwd)/$(dirname "$0")"
 [[ -d "$HOME/.config" ]] || mkdir "$HOME/.config"
 
 function link() { 
+  [ -d "$(dirname "$1")" ] || mkdir -p "$(dirname "$1")"
   [ -f "$1" -o -d "$1" ] || ln -s "$0" "$1"
 }
 
