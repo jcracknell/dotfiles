@@ -22,11 +22,6 @@ function __ps1() {
   __ps1_git_root=$(git rev-parse --show-toplevel 2>/dev/null)
 
   echo -ne "$(__ps1_e '0;44') $1@$2 "
-  # Display a read-only indicator if the working directory is not writable
-  if [ ! -w "$PWD" -a $__ps1_sym_ro ]; then
-    echo -ne "${__ps1_sym_ro} "
-  fi
-  echo -ne "$(__ps1_e '1')$3 $(__ps1_e '0;34')"
   if [ $__ps1_git_root ]; then
     # Get the repository name from the root path
     __ps1_git_repo=${__ps1_git_root##*/}
@@ -36,7 +31,7 @@ function __ps1() {
     # Display an asterix to indicate if the repository is not pristine
     __ps1_git_status=$(git status --porcelain 2>/dev/null | cut -c 1,2 | grep '[^ !?]' | head -n 1 | sed -r 's/.+/*/g')
 
-    echo -ne "$(__ps1_e '45')${__ps1_sym_sep}$(__ps1_e '0;45') "
+    echo -ne "$(__ps1_e '34;45')${__ps1_sym_sep}$(__ps1_e '0;45') "
     if [ $__ps1_sym_branch ]; then
       echo -ne "${__ps1_sym_branch} "
     fi
@@ -44,9 +39,13 @@ function __ps1() {
     if [ "$__ps1_git_root" != "$PWD" ]; then
       echo -ne "${__ps1_git_repo}@"
     fi
-    echo -ne "$(__ps1_e '1')${__ps1_git_branch}${__ps1_git_status} $(__ps1_e '0;35')"
+    echo -ne "$(__ps1_e '1')${__ps1_git_branch}${__ps1_git_status} $(__ps1_e '0;35;44')${__ps1_sym_sep} $(__ps1_e '0;44')"
   fi
-  echo -ne "${__ps1_sym_sep}$(__ps1_e '0') "
+  # Display a read-only indicator if the working directory is not writable
+  if [ ! -w "$PWD" -a $__ps1_sym_ro ]; then
+    echo -ne "${__ps1_sym_ro} "
+  fi
+  echo -ne "$(__ps1_e '1')$3 $(__ps1_e '0;34')${__ps1_sym_sep}$(__ps1_e '0') "
 }
 
 export -f __ps1
