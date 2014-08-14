@@ -4,6 +4,7 @@
 alias ls='ls --color=auto'
 alias read='read -r'
 
+export EDITOR=vim
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
 if [ $(echo $LANG | grep UTF) ]; then
