@@ -1,3 +1,5 @@
+[core]
+  askpass =
 [user]
 	name = James Cracknell
 [color]
