@@ -6,6 +6,10 @@ alias ls='ls --color=auto'
 export EDITOR=vim
 export PATH=$HOME/.local/bin:$PATH
 
+# Golang environment variables
+export GOROOT=$HOME/git/go
+
+# Java environment variables
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
 if [ $(echo $LANG | grep UTF) ]; then
