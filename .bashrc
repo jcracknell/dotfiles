@@ -7,7 +7,7 @@ export EDITOR=vim
 export PATH=$HOME/.local/bin:$PATH
 
 # Golang environment variables
-export GOROOT=$HOME/git/go
+export GOPATH=$HOME/git/go
 
 # Java environment variables
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
