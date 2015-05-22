@@ -59,6 +59,7 @@ endif
 au BufRead,BufNewFile *.json set filetype=js
 au BufRead,BufNewFile *.emd set filetype=markdown
 au BufRead,BufNewFile *.emd.expected set filetype=lisp
+au BufRead,BufNewFile *.sbt set filetype=scala
 
 if v:version >= 700
   set omnifunc=syntaxcomplete#Complete
