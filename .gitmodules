@@ -37,3 +37,6 @@
 [submodule "vim/bundle/vim-material-theme"]
 	path = vim/bundle/vim-material-theme
 	url = https://github.com/jdkanani/vim-material-theme
+[submodule "vim/bundle/vim-airline-themes"]
+	path = vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
