@@ -10,8 +10,8 @@ function download() {
 }
 
 function link() { 
-  [ -d "$(dirname "$1")" ] || mkdir -p "$(dirname "$1")"
-  [ -f "$1" -o -d "$1" ] || ln -s "$0" "$1"
+  [ -d "$(dirname "$2")" ] || mkdir -p "$(dirname "$2")"
+  [ -f "$2" -o -d "$2" ] || ln -s "$1" "$2"
 }
 
 link "$DOTFILES/.bashrc"      "$HOME/.bashrc"
