@@ -43,3 +43,6 @@
 [submodule "vim/bundle/jq.vim"]
 	path = vim/bundle/jq.vim
 	url = https://github.com/vito-c/jq.vim
+[submodule "vim/bundle/vim-json"]
+	path = vim/bundle/vim-json
+	url = https://github.com/elzr/vim-json
