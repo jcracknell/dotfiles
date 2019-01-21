@@ -18,7 +18,6 @@ link "$DOTFILES/.bashrc"      "$HOME/.bashrc"
 link "$DOTFILES/sbt"          "$HOME/.sbt"
 link "$DOTFILES/vim"          "$HOME/.vim"
 link "$DOTFILES/vim/vimrc"    "$HOME/.vimrc"
-link "$DOTFILES/vimperatorrc" "$HOME/.vimperatorrc"
 link "$DOTFILES/.ideavimrc"   "$HOME/.ideavimrc"
 
 # Ensure that the primary user configuration file exists so that host-specific global settings are
