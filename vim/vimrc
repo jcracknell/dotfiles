@@ -19,8 +19,6 @@ set nu
 set hlsearch
 set incsearch
 set colorcolumn=120
-set cursorline
-set cursorcolumn
 set laststatus=2
 set showcmd
 set linebreak
