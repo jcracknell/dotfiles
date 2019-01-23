@@ -1,8 +1,10 @@
 [core]
   askpass =
 [user]
-	name = James Cracknell
+  name = James Cracknell
 [color]
-	ui = auto
+  ui = auto
+[credential]
+  helper =
 [alias]
-	fixup = !git commit --amend --date=$(date --iso-8601=seconds)
+  fixup = !git commit --amend --date=$(date --iso-8601=seconds)
