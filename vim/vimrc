@@ -8,8 +8,12 @@ let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size = 1
 
 " vim-airline configuration
-let g:airline_theme = 'base16'
+let g:airline_theme = 'quantum'
 let g:airline_powerline_fonts = 1
+
+" Disable vim-json error highlighting
+let g:vim_json_warnings = 0
+let g:vim_json_syntax_conceal = 0
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
@@ -28,24 +32,25 @@ set shiftwidth=2
 set expandtab
 set bg=dark
 set printoptions=paper:letter,number:y,top:5pc,right:5pc,bottom:5pc,left:5pc
+set conceallevel=0
 syntax on
 
 if !has('gui_running')
   if !isWindowsHost
     set t_Co=256
   endif  
-  colors seti
 else
   set guioptions-=T
-  if isWindowsHost
-    set gfn=Cousine:h10:cANSI
-    set printfont=Cousine:h9:cANSI
-  else
-    set gfn=Fantasque\ Sans\ Mono\ 11
-    set printfont=Fantasque\ Sans\ Mono\ 11
-  endif
-  colors parsec
+  set gfn=Fantasque\ Sans\ Mono\ 11
+  set printfont=Fantasque\ Sans\ Mono\ 11
 endif  
+
+if has("termguicolors")
+  set termguicolors
+  colors quantum
+else
+  colors seti
+endif
 
 if isWindowsHost
   set directory=$USERPROFILE\\vimfiles\\swp//,.,C:\temp//
@@ -62,11 +67,8 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-
 " Filetypes
-au BufRead,BufNewFile *.json set filetype=js
-au BufRead,BufNewFile *.emd set filetype=markdown
-au BufRead,BufNewFile *.emd.expected set filetype=lisp
+au BufRead,BufNewFile *.json set filetype=json
 au BufRead,BufNewFile *.sbt set filetype=scala
 
 if v:version >= 700
